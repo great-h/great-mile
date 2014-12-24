@@ -67,3 +67,7 @@ end
 
 gem 'slim-rails'
 gem 'newrelic_rpm'
+gem 'octokit'
+gem 'redis'
+gem 'dalli'
+gem 'github-markdown'

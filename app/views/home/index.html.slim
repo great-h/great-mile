@@ -1,0 +1,7 @@
+- @issues.each do |issue|
+  .issue
+    h1 = issue.user.login
+    p.body
+      = raw GitHub::Markdown.render_gfm issue.body
+    p.label
+      = issue.labels.map(&:name).join(" ")
