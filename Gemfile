@@ -63,11 +63,12 @@ end
 group :production do
   gem 'puma'
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 gem 'slim-rails'
-gem 'newrelic_rpm'
 gem 'octokit'
 gem 'redis'
 gem 'dalli'
 gem 'github-markdown'
+gem "codeclimate-test-reporter", group: :test, require: nil
