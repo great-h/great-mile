@@ -1,9 +1,11 @@
 - @issues.each do |issue|
   .issue
-    h1 = issue.user.login
+    h1
+      a href=issue.url ##{issue.number}
+      a href=issue.user.url = issue.user.login
+      small = issue.state
     p.body
-      = raw GitHub::Markdown.render_gfm issue.body
+      = raw GitHub::Markdown.render_gfm(issue.body).gsub(/\[(.*?)\]/,"")
     p.label
-      = issue.labels.map(&:name).join(" ")
-    p
-      | Issue State: #{issue.state}
+      - issue.labels do |label|
+        span.label style="color: #{label.color}" = label.name
