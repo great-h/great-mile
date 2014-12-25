@@ -41,7 +41,7 @@ class HomeController < ApplicationController
 
     Rails.cache.fetch(issues_key(repo,name), expires_in: 3.minutes) do
       Rails.logger.info("use GitHub API: #{client.rate_limit.remaining}")
-      client.list_issues(repo, milestone: milestone.number)
+      client.list_issues(repo, milestone: milestone.number, state: 'all')
     end
   end
 
