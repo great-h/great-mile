@@ -9,9 +9,9 @@ nav.top-bar
       .issue
         .title-block
           - issue.user.tap do |user|
-            a.th href=user.url title=user.login
+            a.th href=user.html_url title=user.login
               img src=user.avatar_url width="20" height="20"
-            a.issue-number href=issue.url ##{issue.number}
+            a.issue-number href=issue.html_url ##{issue.number}
         .label-block
           - issue.labels.each do |label|
             span.issue-label.label style="background-color: ##{label.color};"
