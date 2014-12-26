@@ -1,8 +1,12 @@
+- content_for :title
+  | #{@milestone} - #{@repo} | マイルストーンボード
+
 nav.top-bar
   ul.title-area
     li.name
       h1
         a href="http://great-h.github.io" すごい広島
+
 .row
   - @issues.each do |issue|
     .large-4.medium-6.columns

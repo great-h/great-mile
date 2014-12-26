@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-    repo_name = 'great-h/great-h.github.io'
-    @issues = Issue.filter_milestone(repo_name, milestone_name)
+    @repo = 'great-h/great-h.github.io'
+    @milestone = milestone_name
+    @issues = Issue.filter_milestone(@repo, @milestone)
     Rails.logger.info(Github.rate_limit.to_s)
   end
 
