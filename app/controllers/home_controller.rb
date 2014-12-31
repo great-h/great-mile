@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @repo = 'great-h/great-h.github.io'
     @milestone = milestone_name
     @issues = Issue.filter_milestone(@repo, @milestone)
-    if @issues.length == 0
+    if @issues.empty?
       @milestone = milestone_name(Date.today.prev_week)
       @issues = Issue.filter_milestone(@repo, @milestone)
     end
