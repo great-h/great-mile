@@ -73,3 +73,4 @@ gem 'dalli'
 gem 'github-markdown'
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'foundation-rails'
+gem 'rollbar', '~> 1.3.0'
