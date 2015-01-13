@@ -10,9 +10,88 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
+body {
+    font-family:  "ヒラギノ丸ゴ ProN W4","Hiragino Maru Gothic ProN", sans-serif;
+     margin: 0;
+}
+
 @import "bourbon";
+@import "base/base";
 @import "neat";
+
+$base-body-color: white;
+$medium-screen: 640px;
+$large-screen: 480px;
+$base-accent-color: #aa0000;
+
+
+@import "refills/_cards";
+.cards {
+    margin: 8px;
+
+    .card-header.th {
+	line-height: 20px;
+    }
+
+    .card-header img {
+	display: inline-block;
+	margin: 6px 0 -2px 0;
+    }
+
+    .card-copy {
+	height: 140px;
+	overflow: scroll;
+    }
+
+    .issue-number {
+	font-size: 18px;
+	margin: 0px 8px;
+    }
+
+    .issue-label {
+	margin: 8px 2px 6px 1px;
+	color: white;
+	font-size: 12px;
+	padding: 2px;
+    }
+
+    .card {
+    }
+}
+
+$centered-navigation-height: 42px;
+.navigation {
+    background-color: #222;
+
+    height: $centered-navigation-height;
+    color: white;
+    ul {
+	display: block;
+    }
+    li {
+	display: inline;
+    }
+    h1 {
+	display: inline-block;
+    }
+    a.link {
+	display: inline-block;
+	margin: 0 8px;
+	padding: 0 8px;
+	line-height: 42px;
+	color: #aaa;
+	&:hover {
+	    color: white;
+	}
+    }
+}
+
+@import "refills/_footer";
+
+.footer {
+    margin: 2em 0 0 0;
+    padding: 2em;
+}

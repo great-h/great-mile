@@ -1,24 +1,21 @@
 - content_for :title
   | #{@milestone} - #{@repo} | マイルストーンボード
 
-nav.top-bar
+nav.navigation
   ul.title-area
     li.name
-      h1
-        a href="http://great-h.github.io" すごい広島
+      a.link href="http://great-h.github.io" すごい広島
 
-.row
+.cards
   - @issues.each do |issue|
-    .large-4.medium-6.columns
-      .issue
-        .title-block
-          - issue.user.tap do |user|
-            a.th href=user.html_url title=user.login
-              img src=user.avatar_url width="20" height="20"
-            a.issue-number href=issue.html_url ##{issue.number}
-        .label-block
-          - issue.labels.each do |label|
-            span.issue-label.label style="background-color: ##{label.color};"
-              = label.name
-        .issue-body
-          = raw GitHub::Markdown.render_gfm(issue.body).gsub(/\[(.*?)\]/,"")
+    .card
+      - if issue.labels.map(&:name).include? "エア参加"
+        .ribbon-wrapper
+          .ribbon エア参加
+      .card-header
+        - issue.user.tap do |user|
+          a.issue-number href=issue.html_url target="_blank" ##{issue.number}
+          a.th href=user.html_url title=user.login
+            img src=user.avatar_url width="18" height="18"
+      .card-copy
+        = raw GitHub::Markdown.render_gfm(issue.body).gsub(/\[(.*?)\]/,"")

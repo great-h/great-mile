@@ -41,6 +41,10 @@ GEM
     awesome_print (1.2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (0.10.1)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
     bourbon (4.1.1)
       sass (~> 3.3)
       thor
@@ -252,6 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bitters
   bourbon (> 4.0)
   bullet
   byebug
