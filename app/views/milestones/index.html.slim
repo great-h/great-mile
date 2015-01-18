@@ -1,0 +1,4 @@
+- @milestones.each do |milestone|
+  .milestone
+    a href=milestone_path(@user,@repo,milestone.title)
+      = milestone.title

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get ':user/:repository/:milestone' => 'milestones#index', repository: /[^\/]+/
+  repo_rule = /[^\/]+/
+  resources :milestones, path: ':user/:repository', repository: repo_rule
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
