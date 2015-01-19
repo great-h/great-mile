@@ -1,4 +1,16 @@
 class Milestone
+  def self.raw_open(repo)
+    Github.client.list_milestones(repo,
+                                  state: 'open',
+                                  direction: 'desc')
+  end
+
+  def self.raw_closed(repo)
+    Github.client.list_milestones(repo,
+                                  state: 'closed',
+                                  direction: 'desc')
+  end
+
   def self.all(repo)
     cache_key = milestones_key(repo)
     cache_expire = 3.minute
@@ -6,7 +18,7 @@ class Milestone
     if cache.present?
       milestones = cache
     else
-      milestones = Github.client.list_milestones(repo, state: 'all')
+      milestones = raw_open(repo) + raw_closed(repo)
       Rails.cache.write(cache_key, milestones, expires_in: cache_expire)
     end
     milestones

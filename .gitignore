@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 .env
+
+.rake_tasks
+coverage
