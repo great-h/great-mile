@@ -1,4 +1,14 @@
 class Github
+
+  def self.stack
+    @stack ||= Faraday::RackBuilder.new do |builder|
+      options = { store: Rails.cache, logger: Rails.logger, serializer: Yajl }
+      builder.use Faraday::HttpCache, options
+      builder.use Octokit::Response::RaiseError
+      builder.adapter Faraday.default_adapter
+    end
+  end
+
   def self.client(user = nil)
     if user
       config = {
@@ -10,9 +20,9 @@ class Github
                 client_secret: ENV['GITHUB_CLIENT_SECRET'],
                }
     end
-    @client ||= Octokit::Client.new(config).tap { |client|
-      Octokit.auto_paginate = true
-    }
+    Octokit.middleware = stack
+    Octokit.auto_paginate = true
+    Octokit::Client.new(config)
   end
 
   def self.rate_limit

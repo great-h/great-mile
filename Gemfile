@@ -81,3 +81,6 @@ gem 'refills'
 
 gem 'omniauth'
 gem 'omniauth-github'
+
+gem 'faraday-http-cache'
+gem 'yajl-ruby', require: 'yajl'
