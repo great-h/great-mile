@@ -17,12 +17,11 @@ ActiveRecord::Schema.define(version: 20150121010536) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "url"
-    t.string   "token"
-    t.string   "secret"
+    t.string   "uid",        null: false
+    t.string   "nickname",   null: false
+    t.string   "image",      null: false
+    t.string   "url",        null: false
+    t.string   "token",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

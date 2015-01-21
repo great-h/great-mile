@@ -6,10 +6,18 @@ class User < ActiveRecord::Base
                nickname: auth['info']['nickname'],
                image: auth['info']['nickname'],
                url: auth['info']['GitHub'],
-               token: auth['credentials']["token"],
-               secret: auth['credentials']["secret"],
+               token: auth['credentials']['token'],
+               secret: auth['credentials']['secret'],
               }
       user.update!(attrs)
     end
+  end
+
+  def github_client
+    Github.client(self)
+  end
+
+  def repos
+    github_client.list_repos(nickname)
   end
 end
