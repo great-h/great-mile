@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get '/login/:provider/callback', :to => 'sessions#callback'
+  post '/login/:provider/callback', :to => 'sessions#callback'
+  get '/logout' => 'sessions#destroy', :as => :logout
+
   repo_rule = /[^\/]+/
   resources :milestones, path: ':user/:repository', repository: repo_rule
   root 'home#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

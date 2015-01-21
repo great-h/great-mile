@@ -15,3 +15,4 @@
 
 .rake_tasks
 coverage
+.envrc

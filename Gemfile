@@ -78,3 +78,6 @@ gem 'bourbon', '> 4.0'
 gem 'neat', '> 1.6'
 gem 'bitters'
 gem 'refills'
+
+gem 'omniauth'
+gem 'omniauth-github'
