@@ -7,6 +7,12 @@ dependencies:
     - docker info
     - docker build -t eiel/ghmile .
 
+database:
+  ovverride:
+    - docker run --name db -d postgres
+    - DATABASE_IP=`docker inspect dbd | grep IPAddress | cut -d'"' -f 4`
+    - exeport DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile
+
 test:
   override:
     - echo "test"
