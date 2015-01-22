@@ -13,7 +13,7 @@ database:
 
 test:
   override:
-    - DATABASE_IP=`docker inspect dbd | grep IPAddress | cut -d'"' -f 4`; DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile; docker run -e DATABASE_URL=$DATABASE_URL --rm -i -t eiel/ghmile rake
+    - DATABASE_IP=`docker inspect db | grep IPAddress | cut -d'"' -f 4`; DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile; docker run -e DATABASE_URL=$DATABASE_URL --rm -i -t eiel/ghmile rake
 
 deployment:
   hub:
