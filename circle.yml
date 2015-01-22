@@ -10,12 +10,10 @@ dependencies:
 database:
   override:
     - docker run --name db -d postgres
-    - DATABASE_IP=`docker inspect dbd | grep IPAddress | cut -d'"' -f 4`
-    - export DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile
 
 test:
   override:
-    - docker run -e DATABASE_URL=$DATABASE_URL --rm -i -t eie/gh/mile rake
+    - DATABASE_IP=`docker inspect dbd | grep IPAddress | cut -d'"' -f 4`; DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile; docker run -e DATABASE_URL=$DATABASE_URL --rm -i -t eiel/ghmile rake
 
 deployment:
   hub:
