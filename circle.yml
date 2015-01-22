@@ -8,14 +8,14 @@ dependencies:
     - docker build -t eiel/ghmile .
 
 database:
-  ovverride:
+  override:
     - docker run --name db -d postgres
     - DATABASE_IP=`docker inspect dbd | grep IPAddress | cut -d'"' -f 4`
     - exeport DATABASE_URL=postgres://postgres@${DATABASE_IP}/ghmile
 
 test:
   override:
-    - echo "test"
+    - docker run -e DATABASE_URL=$DATABASE_URL --rm -i -t eie/gh/mile rake
 
 deployment:
   hub:
