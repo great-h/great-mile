@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
                uid: auth['uid'],
                nickname: auth['info']['nickname'],
                image: auth['info']['nickname'],
-               url: auth['info']['GitHub'],
+               url: auth['info']['urls']['GitHub'],
                token: auth['credentials']['token'],
               }
       user.update!(attrs)

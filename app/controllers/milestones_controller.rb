@@ -15,7 +15,7 @@ class MilestonesController < ApplicationController
   def param_set
     @user = params[:user]
     @repo = params[:repository]
-    raise '他のリポジトリは未対応' unless repo_name == "great-h/great-h.github.io"
+    login_required unless repo_name == "great-h/great-h.github.io"
   end
 
   def repo_name

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/login/:provider/callback', :to => 'sessions#callback'
   get '/logout' => 'sessions#destroy', :as => :logout
 
+  resources :users, path: ':user', only: [:index]
   repo_rule = /[^\/]+/
   resources :milestones, path: ':user/:repository', repository: repo_rule
   root 'home#index'

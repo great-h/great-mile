@@ -1,0 +1,13 @@
+h1 Users#index
+
+- @orgnizations.each do |orgnization|
+  .login
+    a href=users_path(user: orgnization.login)
+      = orgnization.login
+
+h2 repos
+
+- @repos.each do |repo|
+  .repo
+    a href=milestones_path(user: repo.owner.login, repository: repo.name)
+      = repo.full_name
